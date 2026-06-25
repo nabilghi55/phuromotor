@@ -1,0 +1,126 @@
+.faqSection {
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.subtitle {
+  font-family: var(--font-primary);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-neon-red);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+  }
+}
+
+.desc {
+  color: var(--text-gray-medium);
+  max-width: 600px;
+  font-size: 16px;
+}
+
+.accordion {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: var(--transition-bezier);
+}
+
+.itemActive {
+  border-color: rgba(255, 59, 48, 0.2);
+  background: var(--bg-card-hover);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.questionHeader {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-white);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  gap: 24px;
+  transition: var(--transition-fast);
+}
+
+@media (max-width: 640px) {
+  .questionHeader {
+    font-size: 15px;
+    padding: 20px 24px;
+  }
+}
+
+.questionHeader:hover {
+  color: var(--accent-neon-red);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  color: var(--text-gray-medium);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.itemActive .icon {
+  transform: rotate(135deg);
+  color: var(--accent-neon-red);
+}
+
+.answerWrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.answerContent {
+  padding: 0 32px 24px 32px;
+  color: var(--text-gray-medium);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  .answerContent {
+    padding: 0 24px 20px 24px;
+  }
+}

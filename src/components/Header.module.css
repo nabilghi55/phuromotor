@@ -1,0 +1,231 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 100;
+  transition: var(--transition-bezier);
+  border-bottom: 1px solid transparent;
+}
+
+.headerScrolled {
+  background: rgba(7, 8, 10, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  height: 70px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoImage {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background-color: #000000;
+  transition: var(--transition-bezier);
+}
+
+.logo:hover .logoImage {
+  border-color: var(--accent-neon-red);
+  transform: scale(1.05);
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoTitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--text-white);
+  line-height: 1;
+}
+
+.logoSubtitle {
+  font-family: var(--font-primary);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent-neon-red);
+  margin-top: 4px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navLink {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-gray-medium);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+  position: relative;
+  padding: 6px 0;
+}
+
+.navLink:hover {
+  color: var(--text-white);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent-neon-red);
+  transition: var(--transition-bezier);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.cta {
+  background: transparent;
+  color: var(--text-white);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border-radius: 4px;
+  border: 1px solid var(--border-medium);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition-bezier);
+}
+
+.cta:hover {
+  border-color: var(--accent-neon-red);
+  background: var(--accent-neon-red);
+  box-shadow: 0 0 20px var(--accent-neon-red-glow);
+  transform: translateY(-1px);
+}
+
+.ctaIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-white);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: var(--transition-fast);
+}
+
+.menuButton:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Mobile Responsive */
+@media (max-width: 1150px) {
+  .nav {
+    display: none;
+  }
+  .cta {
+    display: none;
+  }
+  .menuButton {
+    display: block;
+  }
+}
+
+/* Mobile drawer overlay styling */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-darkest);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 40px;
+  transform: translateX(100%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobileMenuOpen {
+  transform: translateX(0);
+}
+
+.mobileNavLink {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text-gray-medium);
+  text-transform: uppercase;
+}
+
+.mobileNavLink:hover {
+  color: var(--text-white);
+}
+
+.mobileCta {
+  background: var(--accent-neon-red);
+  color: var(--text-white);
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 14px 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  border: none;
+  box-shadow: 0 10px 20px rgba(255, 59, 48, 0.25);
+}
+
+.closeButton {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: var(--text-white);
+  cursor: pointer;
+  padding: 8px;
+}

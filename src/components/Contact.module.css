@@ -1,0 +1,195 @@
+.contactSection {
+  background-color: var(--bg-darkest);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.subtitle {
+  font-family: var(--font-primary);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-neon-red);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+  }
+}
+
+.desc {
+  color: var(--text-gray-medium);
+  max-width: 600px;
+  font-size: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: stretch;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.infoCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 40px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.infoItem {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.iconWrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  background: rgba(255, 59, 48, 0.05);
+  border: 1px solid rgba(255, 59, 48, 0.15);
+  color: var(--accent-neon-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.infoIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.infoDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-gray-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.infoValue {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-white);
+  letter-spacing: -0.5px;
+}
+
+.infoSub {
+  font-size: 14px;
+  color: var(--text-gray-medium);
+  line-height: 1.5;
+}
+
+.ctaBox {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border-subtle);
+  padding: 30px;
+  border-radius: 4px;
+}
+
+.ctaTitle {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.ctaText {
+  font-size: 14px;
+  color: var(--text-gray-medium);
+  line-height: 1.6;
+}
+
+.whatsappButton {
+  background: #25d366;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 16px 28px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.25);
+  transition: var(--transition-bezier);
+}
+
+.whatsappButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px rgba(37, 211, 102, 0.35);
+  background: #20ba5a;
+}
+
+.waIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Right Map Column */
+.mapCol {
+  position: relative;
+  min-height: 450px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.mapFrame {
+  width: 100%;
+  height: 100%;
+  min-height: 450px;
+  border: none;
+  filter: grayscale(0.8) invert(0.9) contrast(1.2); /* Premium dark-map styling */
+  transition: var(--transition-bezier);
+}
+
+.mapCol:hover .mapFrame {
+  filter: grayscale(0) invert(0) contrast(1); /* Return to color on hover */
+}
