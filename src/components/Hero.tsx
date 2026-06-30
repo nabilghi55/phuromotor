@@ -51,44 +51,87 @@ export default function Hero() {
       <div className={styles.background} />
       <div className="grid-bg" />
 
+      {/* Giant Watermark Text (Absolute background placement) */}
+      <motion.div
+        initial={{ opacity: 0, y: -30, scale: 0.96 }}
+        animate={{ opacity: 0.03, y: 0, scale: 1 }}
+        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+        className={styles.watermark}
+      >
+        PHURO
+      </motion.div>
+
       <div className={`container ${styles.container}`}>
-        {/* Main Content */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className={styles.content}
-        >
-          <motion.div variants={itemVariants} className={styles.tagline}>
-            <span>●</span> Bengkel Airbag Solo Raya
-          </motion.div>
-          
-          <motion.h1 variants={itemVariants} className={styles.title}>
-            Spesialis Servis <br />
-            <span className={styles.titleHighlight}>Airbag Mobil Solo</span>
-          </motion.h1>
-          
-          <motion.p variants={itemVariants} className={styles.description}>
-            Solusi perbaikan sistem SRS Airbag dan reset crash data modul orisinal bergaransi di Surakarta. Mengembalikan fitur keselamatan berkendara Anda 100% berfungsi optimal sesuai standar orisinal pabrikan.
-          </motion.p>
-
-          <motion.div variants={itemVariants} className={styles.btnGroup}>
-            <a
-              href="https://wa.me/6285867123339?text=Halo%20Phuro%20Motor%20Solo,%20saya%20ingin%20konsultasi%20mengenai%20perbaikan%20airbag%20mobil%20saya."
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.btnPrimary}
-            >
-              Konsultasi Sekarang
-            </a>
+        <div className={styles.mainGrid}>
+          {/* Main Content */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className={styles.content}
+          >
+            <motion.div variants={itemVariants} className={styles.tagline}>
+              <span>●</span> Bengkel Airbag Solo Raya
+            </motion.div>
             
-            <a href="#layanan" className={styles.btnSecondary}>
-              Eksplor Layanan
-            </a>
-          </motion.div>
-        </motion.div>
+            <motion.h1 variants={itemVariants} className={styles.title}>
+              Spesialis Servis <br />
+              <span className={styles.titleHighlight}>Airbag Mobil Solo</span>
+            </motion.h1>
+            
+            <motion.p variants={itemVariants} className={styles.description}>
+              Solusi perbaikan sistem SRS Airbag dan reset crash data modul orisinal bergaransi di Surakarta. Mengembalikan fitur keselamatan berkendara Anda 100% berfungsi optimal sesuai standar orisinal pabrikan.
+            </motion.p>
 
-        {/* HUD Statistics Grid */}
+            <motion.div variants={itemVariants} className={styles.btnGroup}>
+              <a
+                href="https://wa.me/6285867123339?text=Halo%20Phuro%20Motor%20Solo,%20saya%20ingin%20konsultasi%20mengenai%20perbaikan%20airbag%20mobil%20saya."
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.btnPrimary}
+              >
+                Konsultasi Sekarang &rarr;
+              </a>
+              
+              <a href="#layanan" className={styles.btnSecondary}>
+                Eksplor Layanan
+              </a>
+            </motion.div>
+          </motion.div>
+
+          {/* Visual Showcase (Car, Outline Watermark, Diagonal Line) */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className={styles.visual}
+          >
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, ease: "easeInOut", delay: 0.6 }}
+              className={styles.diagonalLine}
+            />
+
+            <motion.div
+              initial={{ opacity: 0, x: 30, scale: 0.98 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+              className={styles.carFrame}
+            >
+              <img
+                src="/assets/deployed_airbag.jpg"
+                alt="Spesialis Servis Airbag Mobil Solo"
+                className={styles.carImage}
+              />
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Horizontal Divider Line */}
+        <div className={styles.divider} />
+
+        {/* HUD Statistics Grid (Horizontal Row) */}
         <motion.div
           variants={statsContainerVariants}
           initial="hidden"
