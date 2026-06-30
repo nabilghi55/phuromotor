@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import styles from "./Contact.module.css";
 
 export default function Contact() {
@@ -5,17 +8,29 @@ export default function Contact() {
     <section id="kontak" className={`section ${styles.contactSection}`}>
       <div className="container">
         {/* Section Header */}
-        <div className={styles.header}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className={styles.header}
+        >
           <span className={styles.subtitle}>Info & Lokasi</span>
           <h2 className={styles.title}>Hubungi Phuro Motor Solo</h2>
           <p className={styles.desc}>
             Konsultasikan kerusakan airbag mobil Anda atau jadwalkan kunjungan servis langsung ke bengkel kami.
           </p>
-        </div>
+        </motion.div>
 
         <div className={styles.grid}>
           {/* Left Column: Contact details */}
-          <div className={styles.infoCol}>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className={styles.infoCol}
+          >
             <div className={styles.infoCard}>
               {/* Address */}
               <div className={styles.infoItem}>
@@ -27,8 +42,8 @@ export default function Contact() {
                 </div>
                 <div className={styles.infoDetails}>
                   <span className={styles.infoLabel}>Alamat Bengkel</span>
-                  <span className={styles.infoValue}>Jl. Adi Sumarmo No. 120</span>
-                  <span className={styles.infoSub}>Banyuanyar, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57137</span>
+                  <span className={styles.infoValue}>Jl. Waru-Gentan, RT.05/RW.02, Dusun II</span>
+                  <span className={styles.infoSub}>Siwal, Kec. Baki, Kabupaten Sukoharjo, Jawa Tengah 57556</span>
                 </div>
               </div>
 
@@ -41,8 +56,8 @@ export default function Contact() {
                 </div>
                 <div className={styles.infoDetails}>
                   <span className={styles.infoLabel}>Jam Kerja</span>
-                  <span className={styles.infoValue}>Senin - Sabtu (08:00 - 17:00)</span>
-                  <span className={styles.infoSub}>Hari Minggu & Libur Nasional Tutup</span>
+                  <span className={styles.infoValue}>Setiap Hari (08:00 - 17:00)</span>
+                  <span className={styles.infoSub}>Buka Setiap Hari Termasuk Libur Nasional</span>
                 </div>
               </div>
 
@@ -79,19 +94,25 @@ export default function Contact() {
                 Kirim WhatsApp Sekarang
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Google Maps embed */}
-          <div className={styles.mapCol}>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className={styles.mapCol}
+          >
             <iframe
               title="Peta Lokasi Phuro Motor Solo"
               className={styles.mapFrame}
-              src="https://maps.google.com/maps?q=Banyuanyar,%20Banjarsari,%20Surakarta&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=-7.588056,110.773333&t=&z=15&ie=UTF8&iwloc=&output=embed"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

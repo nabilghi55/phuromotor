@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import styles from "./Services.module.css";
 
 const services = [
@@ -15,7 +18,7 @@ const services = [
   {
     num: "02",
     title: "Restorasi Cover Dashboard & Setir",
-    desc: "Memperbaiki dan merekondisi cover klakson setir dan panel dashboard yang pecah akibat mengembangnya balon airbag agar kembali rapi, rapat, dan presisi.",
+    desc: "Memperbaiki dan merekondisi cover klakson setir and panel dashboard yang pecah akibat mengembangnya balon airbag agar kembali rapi, rapat, dan presisi.",
     badge: "Presisi & Rapi",
     icon: (
       <svg className={styles.cardIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -47,12 +50,36 @@ const services = [
   },
 ];
 
+const gridVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
 export default function Services() {
   return (
     <section id="layanan" className={`section ${styles.servicesSection}`}>
       <div className="container">
         {/* Section Header */}
-        <div className={styles.header}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className={styles.header}
+        >
           <div className={styles.titleArea}>
             <span className={styles.subtitle}>Spesialisasi Kami</span>
             <h2 className={styles.title}>Solusi Sistem SRS Airbag Mobil</h2>
@@ -60,12 +87,22 @@ export default function Services() {
           <p className={styles.desc}>
             Layanan perbaikan sistem keselamatan berkendara (SRS Airbag) paling lengkap dan terpercaya di Surakarta. Menangani semua jenis dan merek mobil.
           </p>
-        </div>
+        </motion.div>
 
         {/* Services Grid */}
-        <div className={styles.grid}>
+        <motion.div
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className={styles.grid}
+        >
           {services.map((service, index) => (
-            <div key={index} className={styles.card}>
+            <motion.div
+              variants={cardVariants}
+              key={index}
+              className={styles.card}
+            >
               <div className={styles.cardHeader}>
                 <div className={styles.iconWrapper}>
                   {service.icon}
@@ -92,9 +129,9 @@ export default function Services() {
                   </svg>
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

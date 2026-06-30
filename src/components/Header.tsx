@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -26,14 +27,19 @@ export default function Header() {
 
   return (
     <>
-      <header className={`${styles.header} ${isScrolled ? styles.headerScrolled : ""}`}>
+      <motion.header
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className={`${styles.header} ${isScrolled ? styles.headerScrolled : ""}`}
+      >
         <div className={styles.container}>
           {/* Logo with pulse dot */}
           <a href="#" className={styles.logo}>
             <img src="/assets/logo.png" alt="Logo Phuro Motor Solo" className={styles.logoImage} />
             <div className={styles.logoText}>
               <span className={styles.logoTitle}>Phuro Motor</span>
-              <span className={styles.logoSubtitle}>Airbag Specialist</span>
+              <span className={styles.logoSubtitle}>Spesialis Airbag</span>
             </div>
           </a>
 
@@ -69,7 +75,7 @@ export default function Header() {
             </svg>
           </button>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Drawer Navigation */}
       <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ""}`}>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import styles from "./FAQ.module.css";
 
 const faqs = [
@@ -25,6 +26,24 @@ const faqs = [
     a: "Ya, kami berpengalaman melayani sistem airbag untuk berbagai jenis mobil Jepang (Toyota, Honda, Daihatsu, Suzuki, Nissan, Mitsubishi), Eropa (BMW, Mercedes-Benz, Audi, VW), Amerika (Ford, Chevrolet), hingga mobil-mobil keluaran terbaru.",
   },
 ];
+
+const accordionVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 export default function FAQ() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -59,20 +78,33 @@ export default function FAQ() {
 
       <div className="container">
         {/* Section Header */}
-        <div className={styles.header}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className={styles.header}
+        >
           <span className={styles.subtitle}>Pertanyaan Umum</span>
           <h2 className={styles.title}>Tanya Jawab Seputar Airbag</h2>
           <p className={styles.desc}>
             Temukan jawaban untuk pertanyaan yang paling sering ditanyakan oleh pelanggan kami mengenai perbaikan sistem SRS Airbag.
           </p>
-        </div>
+        </motion.div>
 
         {/* Accordion FAQ */}
-        <div className={styles.accordion}>
+        <motion.div
+          variants={accordionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className={styles.accordion}
+        >
           {faqs.map((faq, index) => {
             const isActive = activeIndex === index;
             return (
-              <div
+              <motion.div
+                variants={itemVariants}
                 key={index}
                 className={`${styles.item} ${isActive ? styles.itemActive : ""}`}
               >
@@ -98,18 +130,27 @@ export default function FAQ() {
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                   </svg>
                 </button>
-                <div
-                  className={styles.answerWrapper}
-                  style={{ maxHeight: isActive ? "200px" : "0" }}
-                >
-                  <div className={styles.answerContent}>
-                    <p>{faq.a}</p>
-                  </div>
-                </div>
-              </div>
+                
+                <AnimatePresence initial={false}>
+                  {isActive && (
+                    <motion.div
+                      key="content"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      className={styles.answerWrapper}
+                    >
+                      <div className={styles.answerContent}>
+                        <p>{faq.a}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -11,7 +11,7 @@ export default function Footer() {
           <div className={styles.col}>
             <div className={styles.brand}>
               <span className={styles.brandTitle}>Phuro Motor</span>
-              <span className={styles.brandSubtitle}>Airbag Specialist</span>
+              <span className={styles.brandSubtitle}>Spesialis Airbag</span>
             </div>
             <p className={styles.desc}>
               Spesialis perbaikan sistem SRS Airbag Mobil terpercaya di Surakarta. Mengembalikan modul SRS dan mengganti komponen keselamatan berkendara secara profesional & bergaransi.
@@ -47,7 +47,7 @@ export default function Footer() {
         {/* Bottom Section with SEO Boost */}
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            &copy; {currentYear} Phuro Motor Solo. All Rights Reserved. Spesialis Airbag Solo Raya.
+            &copy; {currentYear} Phuro Motor Solo. Semua Hak Dilindungi. Spesialis Airbag Solo Raya.
           </p>
           
           <div className={styles.seoKeywords}>

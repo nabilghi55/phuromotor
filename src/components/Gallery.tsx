@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import styles from "./Gallery.module.css";
 
 const galleryImages = [
@@ -18,7 +19,7 @@ const galleryImages = [
   {
     src: "/assets/PHOTO-2025-12-15-14-04-10.jpg",
     title: "Reset Crash Data Modul SRS",
-    category: "Reset Software",
+    category: "Reset Modul",
   },
   {
     src: "/assets/PHOTO-2025-12-15-14-04-11.jpg",
@@ -53,7 +54,7 @@ const galleryImages = [
   {
     src: "/assets/PHOTO-2025-12-15-14-04-17.jpg",
     title: "Kalibrasi Ulang Modul Airbag",
-    category: "Reset Software",
+    category: "Reset Modul",
   },
   {
     src: "/assets/PHOTO-2025-12-15-14-04-18.jpg",
@@ -72,6 +73,25 @@ const galleryImages = [
   },
 ];
 
+const gridVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
 export default function Gallery() {
   const [visibleCount, setVisibleCount] = useState(8);
 
@@ -83,18 +103,36 @@ export default function Gallery() {
     <section id="galeri" className={`section ${styles.gallerySection}`}>
       <div className="container">
         {/* Section Header */}
-        <div className={styles.header}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className={styles.header}
+        >
           <span className={styles.subtitle}>Dokumentasi Aktual</span>
           <h2 className={styles.title}>Galeri Pengerjaan Bengkel</h2>
           <p className={styles.desc}>
             Kumpulan bukti pengerjaan riil sistem airbag mobil oleh teknisi kami. Kami menjamin hasil akhir yang rapi, presisi, dan aman.
           </p>
-        </div>
+        </motion.div>
 
         {/* Image Grid */}
-        <div className={styles.grid}>
+        <motion.div
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className={styles.grid}
+        >
           {galleryImages.slice(0, visibleCount).map((img, index) => (
-            <div key={index} className={styles.card}>
+            <motion.div
+              variants={cardVariants}
+              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              key={index}
+              className={styles.card}
+            >
               <span className={styles.tag}>Aktual</span>
               <Image
                 src={img.src}
@@ -107,13 +145,18 @@ export default function Gallery() {
                 <h3 className={styles.cardTitle}>{img.title}</h3>
                 <span className={styles.cardDesc}>{img.category}</span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Load More Button */}
         {visibleCount < galleryImages.length && (
-          <div className={styles.btnContainer}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className={styles.btnContainer}
+          >
             <button className={styles.loadMoreBtn} onClick={showMore}>
               Lihat Lebih Banyak Foto
               <svg
@@ -126,7 +169,7 @@ export default function Gallery() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-          </div>
+          </motion.div>
         )}
       </div>
     </section>

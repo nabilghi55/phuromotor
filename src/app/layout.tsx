@@ -84,16 +84,16 @@ export default function RootLayout({
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Jl. Adi Sumarmo No. 120, Banyuanyar, Kec. Banjarsari",
-      "addressLocality": "Surakarta",
+      "streetAddress": "Jl. Waru-Gentan, RT.05/RW.02, Dusun II, Siwal, Kec. Baki",
+      "addressLocality": "Sukoharjo",
       "addressRegion": "Jawa Tengah",
-      "postalCode": "57137",
+      "postalCode": "57556",
       "addressCountry": "ID"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": -7.5457,
-      "longitude": 110.8034
+      "latitude": -7.588056,
+      "longitude": 110.773333
     },
     "openingHoursSpecification": [
       {
@@ -104,7 +104,8 @@ export default function RootLayout({
           "Wednesday",
           "Thursday",
           "Friday",
-          "Saturday"
+          "Saturday",
+          "Sunday"
         ],
         "opens": "08:00",
         "closes": "17:00"

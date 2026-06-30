@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import styles from "./WhyChooseUs.module.css";
 
 const features = [
@@ -45,12 +48,46 @@ const features = [
   },
 ];
 
+const leftVariants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
+const rightContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const rightCardVariants = {
+  hidden: { opacity: 0, x: 50, y: 10 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
 export default function WhyChooseUs() {
   return (
     <section id="keunggulan" className={`section ${styles.whySection}`}>
       <div className={`container ${styles.container}`}>
         {/* Left Column */}
-        <div className={styles.leftContent}>
+        <motion.div
+          variants={leftVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className={styles.leftContent}
+        >
           <span className={styles.subtitle}>Prioritas Kami</span>
           <h2 className={styles.title}>Keamanan & Standar Orisinal</h2>
           <p className={styles.desc}>
@@ -68,12 +105,22 @@ export default function WhyChooseUs() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column - Feature Cards */}
-        <div className={styles.features}>
+        <motion.div
+          variants={rightContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className={styles.features}
+        >
           {features.map((feat, idx) => (
-            <div key={idx} className={styles.featureCard}>
+            <motion.div
+              variants={rightCardVariants}
+              key={idx}
+              className={styles.featureCard}
+            >
               <div className={styles.iconWrapper}>
                 {feat.icon}
               </div>
@@ -81,9 +128,9 @@ export default function WhyChooseUs() {
                 <h3 className={styles.featureTitle}>{feat.title}</h3>
                 <p className={styles.featureDesc}>{feat.desc}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
