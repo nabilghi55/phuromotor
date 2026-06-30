@@ -12,7 +12,7 @@ const containerVariants = {
       delayChildren: 0.1,
     },
   },
-};
+} as const;
 
 const itemVariants = {
   hidden: { opacity: 0, y: 25 },
@@ -21,7 +21,7 @@ const itemVariants = {
     y: 0,
     transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
   },
-};
+} as const;
 
 const statsContainerVariants = {
   hidden: { opacity: 0 },
@@ -32,7 +32,7 @@ const statsContainerVariants = {
       delayChildren: 0.4,
     },
   },
-};
+} as const;
 
 const statCardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.96 },
@@ -42,7 +42,7 @@ const statCardVariants = {
     scale: 1,
     transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
   },
-};
+} as const;
 
 export default function Hero() {
   return (

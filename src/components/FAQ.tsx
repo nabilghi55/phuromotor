@@ -34,7 +34,7 @@ const accordionVariants = {
       staggerChildren: 0.08,
     },
   },
-};
+} as const;
 
 const itemVariants = {
   hidden: { opacity: 0, y: 15 },
@@ -43,7 +43,7 @@ const itemVariants = {
     y: 0,
     transition: { duration: 0.5, ease: "easeOut" },
   },
-};
+} as const;
 
 export default function FAQ() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

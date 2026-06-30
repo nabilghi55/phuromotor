@@ -80,7 +80,7 @@ const gridVariants = {
       staggerChildren: 0.05,
     },
   },
-};
+} as const;
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -90,7 +90,7 @@ const cardVariants = {
     scale: 1,
     transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
   },
-};
+} as const;
 
 export default function Gallery() {
   const [visibleCount, setVisibleCount] = useState(8);

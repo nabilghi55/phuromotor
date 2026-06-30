@@ -57,7 +57,7 @@ const gridVariants = {
       staggerChildren: 0.1,
     },
   },
-};
+} as const;
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -66,7 +66,7 @@ const cardVariants = {
     y: 0,
     transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   },
-};
+} as const;
 
 export default function Services() {
   return (

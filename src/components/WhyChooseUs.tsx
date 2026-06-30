@@ -55,7 +55,7 @@ const leftVariants = {
     x: 0,
     transition: { duration: 0.8, ease: "easeOut" },
   },
-};
+} as const;
 
 const rightContainerVariants = {
   hidden: {},
@@ -64,7 +64,7 @@ const rightContainerVariants = {
       staggerChildren: 0.12,
     },
   },
-};
+} as const;
 
 const rightCardVariants = {
   hidden: { opacity: 0, x: 50, y: 10 },
@@ -74,7 +74,7 @@ const rightCardVariants = {
     y: 0,
     transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
   },
-};
+} as const;
 
 export default function WhyChooseUs() {
   return (
